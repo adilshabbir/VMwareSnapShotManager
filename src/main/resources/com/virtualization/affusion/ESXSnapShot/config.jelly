@@ -1,0 +1,30 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <f:entry name="operationType" title="Choose Operation Type" field="operationType">
+            <select name="operationType">
+                <f:option value="revert" selected="${'revert'==instance.operationType}">Revert VM SnapShot</f:option>
+                <f:option value="create" selected="${'create'==instance.operationType}">Create VM SnapShot</f:option>
+		        <f:option value="remove" selected="${'remove'==instance.operationType}">Remove VM SnapShot</f:option>
+            </select>
+  </f:entry> 
+  <f:entry title="Virtual Center Server IP" field="vCenterServerIP">
+    <f:textbox />
+  </f:entry>
+   
+  <f:entry title="User ID" field="userID">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Password" field="password">
+    <f:password />
+  </f:entry>
+   <f:entry title="Virtual Machine " field="vmName">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Snap Shot Name" field="vmSnapShotName">
+    <f:textbox />
+  </f:entry>
+   
+  <f:validateButton
+   title="Test Connection" progress="Connection Testing"
+   method="testConnection" with="vCenterServerIP,userID,password,vmName,vmSnapShotName" />
+
+</j:jelly>
